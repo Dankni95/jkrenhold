@@ -17,7 +17,7 @@ const Navbar = () => {
     file(relativePath: {eq: "icon.png"}) {
       childImageSharp {
         fixed(
-          width: 50) {
+          width: 150) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -26,19 +26,21 @@ const Navbar = () => {
   `)
   return (
     <>
-      <Nav className="navBar" id="mainNavBar">
+      <Bars> </Bars>
+      <MobileLogo to="/"><Logo
+        fixed={data.file.childImageSharp.fixed}
+        alt="JK renhold logo"
+      /></MobileLogo>
+      <Nav className="active" id="mainNavBar">
         <Page to="/"><Logo
           fixed={data.file.childImageSharp.fixed}
-          alt="A corgi smiling happily"
+          alt="JK renhold logo"
         /></Page>
-        <Page to="/">FORSIDE</Page>
+        <Page className="" to="/">FORSIDE</Page>
         <Page to="/om-oss/">OM OSS</Page>
         <Page to="#">RENGJØRING</Page>
         <Page to="#">AVDELINGER</Page>
         <Page to="/kontakt-oss/">KONTAKT OSS</Page>
-        <i className="burger-icon">
-          <Bars />
-        </i>
       </Nav>
       <Title>Hi, welcome to my site!</Title>
     </>
@@ -46,59 +48,112 @@ const Navbar = () => {
 }
 
 const Title = styled.h1`
+display: flex;
+position: relative; 
+justify-content: center;
   font-size: 2em;
-  text-align: center;
-  color: red;
+  word-wrap: break-word;
+  color: #0E3C7B;
+
+  top: 290px
 `;
+
+
 const Nav = styled.div`
-  height: 5em;
+
+/* Desktop view */
+
+  height: 4em;
+  font-size: 1.3rem;
   background: transparent;
   display: flex;
-  flex: 1;
-  justify-content: space-between;
+  align-items: space-between
   padding: 0.2rem calc((100vw - 1000px) / 2);
-  background-color: red;
 
-  Link{
-    text-decoration: none;
-    font-size: 1.5em;
-    align-self: center;
-  }
+  /* Mobile view */
+
+  @media (max-width: 648px) {
+    &:not(:first-child){
+      display: flex;
+      width: 100%;
+      height: 40%;
+      position: absolute;
+      top: 80px;
+      opacity: 0;
+      transition: all 0.2s ease;
+      flex-direction: column;
+      list-style-type: none;
+      grid-gap: 0px;
+    } 
+    
   
+      &.active{
+        background: #9899d1;
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+      }
+
+   }
+
 `;
 const Bars = styled(FaBars)`
+
+  /* stylelint-disable */
   display: none;
   color: #808080;
+
+
+  /* stylelint-disable */
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
     transform: translate(-100%, 75%);
-    font-size: 1.8rem;
+    font-size: 2rem;
     cursor: pointer;
-  }
+}
 `;
 
 const Page = styled(Link)`
-  color: #808080;
-  display: flex;
+
+/* stylelint-disable */
+
+  color: #0E3C7B;
+  display: inline-flex;
   align-items: center;
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
-    &.active {
-      color: #000000;
+    &:hover {
+      border-radius: 15px;
+      background-color:#FEEA2B;
+    }
+    &:first-child{
+      
+      margin: 0rem 2rem;
+
+      @media (max-width: 648px) {
+        display: none;
+      }
     }
 
 `;
 
 const Logo = styled(Img)`
   display: flex;
-  align-items: center;
+  bottom: 15%
+  
 `;
-
+const MobileLogo = styled(Link)`
+  display: none;
+  @media (max-width: 648px) {
+    display: block;
+  }
+`;
 
 
 export default Navbar

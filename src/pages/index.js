@@ -1,12 +1,13 @@
 import * as React from "react"
 import Navbar from "../components/Navbar"
+import { createGlobalStyle } from 'styled-components'
 
-// styles
-const pageStyles = {
-  padding: 0,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-
+const Main = createGlobalStyle`
+  html, body {
+    height: 100vh;
+    padding: 0;
+  }
+`
 // data
 const links = [
   {
@@ -57,10 +58,11 @@ const links = [
 // markup
 const IndexPage = () => {
   return (
-    <main style={pageStyles}>
+    <>
+    <Main />
       <title>Renhold for bedrifter & private hjem | JK Renholdsservice AS</title>
       <Navbar />
-    </main>
+    </>
   )
 }
 
