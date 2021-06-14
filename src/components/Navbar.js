@@ -20,7 +20,11 @@ const Navbar = () => {
       childImageSharp {
         fixed(
           width: 150) {
-          ...GatsbyImageSharpFixed
+            base64
+            width
+            height
+            src
+            srcSet
         }
       }
     }
@@ -44,24 +48,14 @@ const Navbar = () => {
         <Page to="#">AVDELINGER</Page>
         <Page to="/kontakt-oss/">KONTAKT OSS</Page>
       </Nav>
-      <Title>Hi, welcome to my site!</Title>
     </>
   )
 }
 
-const Title = styled.h1`
-display: flex;
-position: relative; 
-justify-content: center;
-font-size: 2em;
-word-wrap: break-word;
-color: #0E3C7B;
-
-top: 290px;
-`;
 
 
 const Nav = styled.div`
+
 
 /* Desktop view */
 
@@ -69,6 +63,9 @@ const Nav = styled.div`
   font-size: 1.3rem;
   background: transparent;
   display: flex;
+  border-bottom: solid 1px black;
+
+
 
 
   /* Mobile view */
@@ -77,9 +74,9 @@ const Nav = styled.div`
     &:not(:first-child){
       display: flex;
       width: 100%;
-      height: 40%;
+      height: 50%;
       position: absolute;
-      top: 80px;
+      top: 75px;
       opacity: 0;
       flex-direction: column;
       list-style-type: none;
@@ -92,11 +89,12 @@ const Nav = styled.div`
         left: 0;
         opacity: 1;
         transition: all 0.5s ease;
-        z-index: 1;
+        z-index: 2;
       }
 
-   }
-   @media (max-width: 1000px) {
+  }
+
+  @media (max-width: 1000px) {
       &{
       font-size: 1rem;
       }
@@ -134,11 +132,9 @@ const Page = styled(Link)`
   height: 100%;
   cursor: pointer;
     &:hover {
-      border-radius: 15px;
       background-color:#FEEA2B;
     }
     &:first-child{
-      
       margin: 0rem 2rem;
 
       @media (max-width: 750px) {
@@ -157,6 +153,8 @@ const MobileLogo = styled(Link)`
   display: none;
   @media (max-width: 750px) {
     display: block;
+    border-bottom: solid 1px black;
+
   }
 `;
 

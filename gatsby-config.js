@@ -9,6 +9,11 @@ module.exports = {
   plugins: [`gatsby-plugin-sharp`, `gatsby-transformer-sharp`],
 }
 
+
+module.exports = {
+  plugins: [`gatsby-plugin-gatsby-cloud`]
+}
+
 module.exports = {
   plugins: [
     `gatsby-transformer-sharp`,

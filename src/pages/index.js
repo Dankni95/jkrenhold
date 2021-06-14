@@ -1,11 +1,13 @@
 import * as React from "react"
 import Navbar from "../components/Navbar"
+import HeroSection from "../components/Hero"
 import { createGlobalStyle } from 'styled-components'
 
 const Main = createGlobalStyle`
   html, body {
     height: 100vh;
     padding: 0;
+    margin: 0 auto;
   }
 `
 // data
@@ -59,9 +61,10 @@ const links = [
 const IndexPage = () => {
   return (
     <>
-    <Main />
+      <Main />
       <title>Renhold for bedrifter & private hjem | JK Renholdsservice AS</title>
       <Navbar />
+      <HeroSection />
     </>
   )
 }
