@@ -3,7 +3,7 @@
  * This is navbar component!
  */
 
-import * as React from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { FaBars } from "react-icons/fa";
@@ -12,6 +12,8 @@ import { graphql, useStaticQuery } from "gatsby"
 
 
 const Navbar = () => {
+
+  const [showPages, setState] = useState(false);
   const data = useStaticQuery(graphql`
   query MyQuery {
     file(relativePath: {eq: "icon.png"}) {
@@ -26,12 +28,12 @@ const Navbar = () => {
   `)
   return (
     <>
-      <Bars> </Bars>
+      <Bars onClick={() => setState(!showPages)}> </Bars>
       <MobileLogo to="/"><Logo
         fixed={data.file.childImageSharp.fixed}
         alt="JK renhold logo"
       /></MobileLogo>
-      <Nav className="active" id="mainNavBar">
+      <Nav className={showPages ? "active" : "hidden"} id="mainNavBar">
         <Page to="/"><Logo
           fixed={data.file.childImageSharp.fixed}
           alt="JK renhold logo"
@@ -51,11 +53,11 @@ const Title = styled.h1`
 display: flex;
 position: relative; 
 justify-content: center;
-  font-size: 2em;
-  word-wrap: break-word;
-  color: #0E3C7B;
+font-size: 2em;
+word-wrap: break-word;
+color: #0E3C7B;
 
-  top: 290px
+top: 290px;
 `;
 
 
@@ -67,12 +69,11 @@ const Nav = styled.div`
   font-size: 1.3rem;
   background: transparent;
   display: flex;
-  align-items: space-between
-  padding: 0.2rem calc((100vw - 1000px) / 2);
+
 
   /* Mobile view */
 
-  @media (max-width: 648px) {
+  @media (max-width: 750px) {
     &:not(:first-child){
       display: flex;
       width: 100%;
@@ -80,7 +81,6 @@ const Nav = styled.div`
       position: absolute;
       top: 80px;
       opacity: 0;
-      transition: all 0.2s ease;
       flex-direction: column;
       list-style-type: none;
       grid-gap: 0px;
@@ -96,6 +96,11 @@ const Nav = styled.div`
       }
 
    }
+   @media (max-width: 1000px) {
+      &{
+      font-size: 1rem;
+      }
+    }
 
 `;
 const Bars = styled(FaBars)`
@@ -106,7 +111,7 @@ const Bars = styled(FaBars)`
 
 
   /* stylelint-disable */
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 750px) {
     display: block;
     position: absolute;
     top: 0;
@@ -136,7 +141,7 @@ const Page = styled(Link)`
       
       margin: 0rem 2rem;
 
-      @media (max-width: 648px) {
+      @media (max-width: 750px) {
         display: none;
       }
     }
@@ -150,7 +155,7 @@ const Logo = styled(Img)`
 `;
 const MobileLogo = styled(Link)`
   display: none;
-  @media (max-width: 648px) {
+  @media (max-width: 750px) {
     display: block;
   }
 `;
