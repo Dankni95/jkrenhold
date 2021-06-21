@@ -1,9 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: "jkrenhold",
-  },
-  plugins: ["gatsby-plugin-styled-components"],
+  }
 };
+module.exports = {
+  plugins: [`gatsby-plugin-styled-components`],
+}
 
 module.exports = {
   plugins: [`gatsby-plugin-sharp`, `gatsby-transformer-sharp`],
