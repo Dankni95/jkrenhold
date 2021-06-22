@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { FaBars } from "react-icons/fa";
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby"
 
 
@@ -20,44 +20,34 @@ const Navbar = () => {
   }
 
 
-  const data = useStaticQuery(graphql`
-  query MyQuery {
-    file(relativePath: {eq: "icon.png"}) {
-      childImageSharp {
-        fixed(
-          width: 150) {
-            base64
-            width
-            height
-            src
-            srcSet
-        }
-      }
+  const data = useStaticQuery(graphql`query MyQuery {
+  file(relativePath: {eq: "icon.png"}) {
+    childImageSharp {
+      gatsbyImageData(width: 150, placeholder: BLURRED, layout: FIXED)
     }
   }
-  `)
+}
+`)
 
 
-  return (
-    <>
-      <Bars onClick={() => setState(!showPages)}></Bars>
-      <MobileLogo to="/"><Logo
-        fixed={data.file.childImageSharp.fixed}
+  return <>
+    <Bars onClick={() => setState(!showPages)}></Bars>
+    <MobileLogo to="/"><Logo
+      fixed={data.file.childImageSharp.gatsbyImageData}
+      alt="JK renhold logo"
+    /></MobileLogo>
+    <Nav className={showPages ? "active" : "hidden"} id="mainNavBar">
+      <Page to="/"><Logo
+        image={data.file.childImageSharp.gatsbyImageData}
         alt="JK renhold logo"
-      /></MobileLogo>
-      <Nav className={showPages ? "active" : "hidden"} id="mainNavBar">
-        <Page to="/"><Logo
-          fixed={data.file.childImageSharp.fixed}
-          alt="JK renhold logo"
-        /></Page>
-        <Page to="/" getProps={isActive}>FORSIDE</Page>
-        <Page to="/om-oss/" getProps={isActive}>OM OSS</Page>
-        <Page to="#" getProps={isActive}>RENGJØRING</Page>
-        <Page to="#" getProps={isActive}>AVDELINGER</Page>
-        <Page to="/kontakt-oss/" getProps={isActive}>KONTAKT OSS</Page>
-      </Nav>
-    </>
-  )
+      /></Page>
+      <Page to="/" getProps={isActive}>FORSIDE</Page>
+      <Page to="/om-oss/" getProps={isActive}>OM OSS</Page>
+      <Page to="#" getProps={isActive}>RENGJØRING</Page>
+      <Page to="#" getProps={isActive}>AVDELINGER</Page>
+      <Page to="/kontakt-oss/" getProps={isActive}>KONTAKT OSS</Page>
+    </Nav>
+  </>;
 }
 
 
@@ -159,7 +149,7 @@ const Page = styled(Link)`
    
 `;
 
-const Logo = styled(Img)`
+const Logo = styled(GatsbyImage)`
   display: flex;
   bottom: 15%
   

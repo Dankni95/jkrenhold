@@ -6,44 +6,36 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
 import { Link } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby"
 
 const HeroSection = () => {
-  const data = useStaticQuery(graphql`
-    query myQueryAndMyQuery {
-        file(relativePath: {eq: "jk-vaskehjelp-hero.jpg"}) {
-          childImageSharp {
-            fluid {
-              base64
-              aspectRatio
-              src
-              srcSet
-            }
-          }
-        }
-      }
-      
+  const data = useStaticQuery(graphql`query myQueryAndMyQuery {
+  file(relativePath: {eq: "jk-vaskehjelp-hero.jpg"}) {
+    childImageSharp {
+      gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+    }
+  }
+}
 `)
+console.log(data);
   function sayHello() {
     alert('Hello')
   }
 
-  return (
-    <>
+  return <>
 
-      <Wrapper>
-        <Title>La profesjonelle ta renholdet!</Title>
-        <ContactButton>
-          <Link to="#">Kontakt oss</Link>
-        </ContactButton>
-        <HeroImage
-          fluid={data.file.childImageSharp.fluid}
-          alt="JK renhold vaskehjelp hero">
-        </HeroImage>
-      </Wrapper>
-    </>
-  )
+    <Wrapper>
+      <Title>La profesjonelle ta renholdet!</Title>
+      <ContactButton>
+        <Link to="#">Kontakt oss</Link>
+      </ContactButton>
+      <HeroImage
+        image={data.file.childImageSharp.gatsbyImageData}
+        alt="JK renhold vaskehjelp hero">
+      </HeroImage>
+    </Wrapper>
+  </>;
 }
 const Wrapper = styled.div`
  
@@ -61,8 +53,7 @@ const Wrapper = styled.div`
       }
       `;
 
-const HeroImage = styled(Img)`
-      display: flex;
+const HeroImage = styled(GatsbyImage)`
       opacity: 0.7; 
       max-height: calc(100vh - 5rem);
       
