@@ -7,9 +7,6 @@ module.exports = {
   plugins: [`gatsby-plugin-styled-components`],
 }
 
-module.exports = {
-  plugins: [`gatsby-plugin-sharp`, `gatsby-transformer-sharp`],
-}
 
 
 module.exports = {
@@ -18,8 +15,9 @@ module.exports = {
 
 module.exports = {
   plugins: [
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`, // Needed for dynamic images
     {
       resolve: `gatsby-source-filesystem`,
       options: {
