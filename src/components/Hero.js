@@ -32,8 +32,8 @@ const HeroSection = () => {
   return (
     <>
 
-      <Title>La profesjonelle ta renholdet!</Title>
       <Wrapper>
+        <Title>La profesjonelle ta renholdet!</Title>
         <ContactButton>
           <Link to="#">Kontakt oss</Link>
         </ContactButton>
@@ -46,9 +46,16 @@ const HeroSection = () => {
   )
 }
 const Wrapper = styled.div`
+ 
+      /* --yellow: #0E3C7B;
+      --blue: #FEEA2B; */
+
+
       display: flex;
-      justify-content: center;
+      align-items: center;
+      align-items: flex-start;
       background-color: black;
+        min-width: 100%;
       & > * {
         flex-grow: 1;
       }
@@ -65,8 +72,8 @@ const HeroImage = styled(Img)`
       
       
       @media screen and (max-width: 750px) {
-          max-height: 100vh;
-          height: 60vh;
+          max-height: calc(100vh - 5rem);
+          height: 80vh;
       }
       `;
 
@@ -74,23 +81,35 @@ const HeroImage = styled(Img)`
 const Title = styled.h1`
     position: absolute;
     opacity: 1;
-    top: 37%;
+    top: 25%;
     left: 5%;
-    font-size: 3em;
+    font-size: 4.5em;
     word-wrap: break-word;
     color: white;
-    z-index: 1; 
+    z-index: 1;
 
     @media screen and (max-width: 750px) {
-    top: 17%;
-    left: 5%;
-}
+         font-size: 3.5em;
+         width: 65%;
+      }
+      @media screen and (max-width: 1280px) {
+        top: 5%;
+         font-size: 5.5em;
+         width: 90%;
+      }
+      @media screen and (max-width: 550px) {
+          top: 15%;
+         font-size: 3.5em;
+         width: 90%;
+      }
 `;
 
 const ContactButton = styled.button`
   position: absolute;
-  top: 50%;
-  left: 250px;
+  display: flex;
+  align-self: center;
+  bottom: 20%;
+  left: 5%;
   background-color: #FEEA2B;
   color: #0E3C7B;
   font-size: 32px;
@@ -98,20 +117,25 @@ const ContactButton = styled.button`
   border-radius: 15px;
   margin: 10px 0px;
   cursor: pointer;
+  z-index: 1;
   & a{
     text-decoration: none;
   }
   & a:active{
     color: white;
   }
-  z-index: 1;
-
-  
+  &:hover{
+    background-color: #153C7B; 
+    a{
+      color: white;
+    }
+  }
   @media screen and (max-width: 750px) {
-    top: 40%;
-    left: 30px;
-    font-size: 20px;
-}
+        bottom:15%;
+        font-size: 1.5em;
+        max-width: 90%;
+      }
+  
 `;
 
 

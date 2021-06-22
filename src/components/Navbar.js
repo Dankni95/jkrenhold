@@ -14,6 +14,12 @@ import { graphql, useStaticQuery } from "gatsby"
 const Navbar = () => {
 
   const [showPages, setState] = useState(false);
+
+  function isActive({ isCurrent }) {
+    return isCurrent ? { id: "onPage" } : null
+  }
+
+
   const data = useStaticQuery(graphql`
   query MyQuery {
     file(relativePath: {eq: "icon.png"}) {
@@ -30,9 +36,11 @@ const Navbar = () => {
     }
   }
   `)
+
+
   return (
     <>
-      <Bars onClick={() => setState(!showPages)}> </Bars>
+      <Bars onClick={() => setState(!showPages)}></Bars>
       <MobileLogo to="/"><Logo
         fixed={data.file.childImageSharp.fixed}
         alt="JK renhold logo"
@@ -42,11 +50,11 @@ const Navbar = () => {
           fixed={data.file.childImageSharp.fixed}
           alt="JK renhold logo"
         /></Page>
-        <Page className="" to="/">FORSIDE</Page>
-        <Page to="/om-oss/">OM OSS</Page>
-        <Page to="#">RENGJØRING</Page>
-        <Page to="#">AVDELINGER</Page>
-        <Page to="/kontakt-oss/">KONTAKT OSS</Page>
+        <Page to="/" getProps={isActive}>FORSIDE</Page>
+        <Page to="/om-oss/" getProps={isActive}>OM OSS</Page>
+        <Page to="#" getProps={isActive}>RENGJØRING</Page>
+        <Page to="#" getProps={isActive}>AVDELINGER</Page>
+        <Page to="/kontakt-oss/" getProps={isActive}>KONTAKT OSS</Page>
       </Nav>
     </>
   )
@@ -65,8 +73,9 @@ const Nav = styled.div`
   display: flex;
   border-bottom: solid 1px black;
 
-
-
+  #onPage{
+    background-color: #FEEA2B;
+}
 
   /* Mobile view */
 
@@ -94,9 +103,14 @@ const Nav = styled.div`
 
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
       &{
       font-size: 1rem;
+      }
+    }
+    @media (max-width: 910px) {
+      &{
+      font-size: 0.7rem;
       }
     }
 
@@ -110,7 +124,7 @@ const Bars = styled(FaBars)`
 
   /* stylelint-disable */
   @media screen and (max-width: 750px) {
-    display: block;
+      display: block;
     position: absolute;
     top: 0;
     right: 0;
@@ -118,10 +132,10 @@ const Bars = styled(FaBars)`
     font-size: 2rem;
     cursor: pointer;
 }
+
 `;
 
 const Page = styled(Link)`
-
 /* stylelint-disable */
 
   color: #0E3C7B;
@@ -142,6 +156,7 @@ const Page = styled(Link)`
       }
     }
 
+   
 `;
 
 const Logo = styled(Img)`

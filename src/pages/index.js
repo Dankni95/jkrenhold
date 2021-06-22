@@ -1,6 +1,5 @@
 import * as React from "react"
-import Navbar from "../components/Navbar"
-import HeroSection from "../components/Hero"
+import Layout from "../components/Layout"
 import { createGlobalStyle } from 'styled-components'
 
 const Main = createGlobalStyle`
@@ -62,9 +61,10 @@ const IndexPage = () => {
   return (
     <>
       <Main />
+      <Layout>
       <title>Renhold for bedrifter & private hjem | JK Renholdsservice AS</title>
-      <Navbar />
-      <HeroSection />
+      <h1>Hey!</h1>
+      </Layout>
     </>
   )
 }
