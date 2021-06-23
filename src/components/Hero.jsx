@@ -18,7 +18,9 @@ const HeroSection = () => {
   }
 }
 `)
-console.log(data);
+
+  console.log(data);
+
   function sayHello() {
     alert('Hello')
   }
@@ -30,6 +32,7 @@ console.log(data);
       <ContactButton>
         <Link to="#">Kontakt oss</Link>
       </ContactButton>
+      <DarkOverlay />
       <HeroImage
         image={data.file.childImageSharp.gatsbyImageData}
         alt="JK renhold vaskehjelp hero">
@@ -46,22 +49,32 @@ const Wrapper = styled.div`
       display: flex;
       align-items: center;
       align-items: flex-start;
-      background-color: black;
-        min-width: 100%;
+      min-width: 100%;
       & > * {
         flex-grow: 1;
       }
       `;
 
-const HeroImage = styled(GatsbyImage)`
-      opacity: 0.7; 
+const DarkOverlay = styled.div`
+
+background-color: rgba(0, 0, 0, 0.35);
+  position: absolute;
       max-height: calc(100vh - 5rem);
-      
-      &{
-        background-color: #fff;
+          
+      @media screen and (max-width: 750px) {
+          max-height: calc(100vh - 5rem);
+          height: 80vh;
       }
-      
-      
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+`;
+
+const HeroImage = styled(GatsbyImage)`
+
+      position: relative;
+      max-height: calc(100vh - 5rem);
+          
       @media screen and (max-width: 750px) {
           max-height: calc(100vh - 5rem);
           height: 80vh;
@@ -77,7 +90,7 @@ const Title = styled.h1`
     font-size: 4.5em;
     word-wrap: break-word;
     color: white;
-    z-index: 1;
+    z-index: 3;
 
     @media screen and (max-width: 750px) {
          font-size: 3.5em;
@@ -99,7 +112,7 @@ const ContactButton = styled.button`
   position: absolute;
   display: flex;
   align-self: center;
-  bottom: 20%;
+  bottom: 40%;
   left: 5%;
   background-color: #FEEA2B;
   color: #0E3C7B;
@@ -108,7 +121,7 @@ const ContactButton = styled.button`
   border-radius: 15px;
   margin: 10px 0px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 3;
   & a{
     text-decoration: none;
   }
@@ -122,11 +135,21 @@ const ContactButton = styled.button`
     }
   }
   @media screen and (max-width: 750px) {
-        bottom:15%;
+        bottom:35%;
         font-size: 1.5em;
         max-width: 90%;
       }
-  
+
+      @media screen and (max-width: 1250px) {
+        bottom:75%;
+        font-size: 1.5em;
+        max-width: 90%;
+      }
+      @media screen and (max-width: 350px) {
+        bottom:20%;
+        font-size: 1.5em;
+        max-width: 90%;
+      }
 `;
 
 

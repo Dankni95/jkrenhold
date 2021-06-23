@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import Hero from './Hero'
+import Footer from './Footer'
 
 export default function Layout({ children }) {
     return (
@@ -10,7 +11,7 @@ export default function Layout({ children }) {
             <div className="content">
                 {children}
             </div>
-            <footer><h2>sup</h2></footer>
+            <Footer />
         </>
     )
 }

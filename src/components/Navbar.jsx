@@ -12,6 +12,13 @@ import { graphql, useStaticQuery } from "gatsby"
 
 
 const Navbar = () => {
+  const data = useStaticQuery(graphql`query MyQuery {
+  file(relativePath: {eq: "icon.png"}) {
+    childImageSharp {
+      gatsbyImageData(width: 150, placeholder: BLURRED, layout: FIXED)
+    }
+  }
+}`)
 
   const [showPages, setState] = useState(false);
 
@@ -20,24 +27,14 @@ const Navbar = () => {
   }
 
 
-  const data = useStaticQuery(graphql`query MyQuery {
-  file(relativePath: {eq: "icon.png"}) {
-    childImageSharp {
-      gatsbyImageData(width: 150, placeholder: BLURRED, layout: FIXED)
-    }
-  }
-}
-`)
 
 
   return <>
-    <Bars onClick={() => setState(!showPages)}></Bars>
-    <MobileLogo to="/"><Logo
-      fixed={data.file.childImageSharp.gatsbyImageData}
-      alt="JK renhold logo"
-    /></MobileLogo>
+    <MobileLogo>
+      <Bars onClick={() => setState(!showPages)}></Bars>
+    </MobileLogo>
     <Nav className={showPages ? "active" : "hidden"} id="mainNavBar">
-      <Page to="/"><Logo
+      <Page to="/"><Logo className="logo"
         image={data.file.childImageSharp.gatsbyImageData}
         alt="JK renhold logo"
       /></Page>
@@ -70,13 +67,15 @@ const Nav = styled.div`
   /* Mobile view */
 
   @media (max-width: 750px) {
-    &:not(:first-child){
+    a{
+      height: 15%
+    }
+    &{
+      position: absolute;
       display: flex;
       width: 100%;
       height: 50%;
-      position: absolute;
       top: 75px;
-      opacity: 0;
       flex-direction: column;
       list-style-type: none;
       grid-gap: 0px;
@@ -86,9 +85,8 @@ const Nav = styled.div`
       &.active{
         background: #9899d1;
         left: 0;
-        opacity: 1;
         transition: all 0.5s ease;
-        z-index: 2;
+        z-index: 4;
       }
 
   }
@@ -107,14 +105,14 @@ const Nav = styled.div`
 `;
 const Bars = styled(FaBars)`
 
-  /* stylelint-disable */
+  /* Desktop view */
   display: none;
   color: #808080;
 
 
-  /* stylelint-disable */
+  /* Mobile view  */
   @media screen and (max-width: 750px) {
-      display: block;
+    display: block;
     position: absolute;
     top: 0;
     right: 0;
@@ -126,40 +124,47 @@ const Bars = styled(FaBars)`
 `;
 
 const Page = styled(Link)`
-/* stylelint-disable */
-
+/* Desktop view */
   color: #0E3C7B;
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  font-size: 1rem;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
     &:hover {
       background-color:#FEEA2B;
     }
-    &:first-child{
-      margin: 0rem 2rem;
 
-      @media (max-width: 750px) {
-        display: none;
-      }
+// logo
+//Mobile view 
+  @media (max-width: 750px) {
+    &:first-child  {
+      position:absolute;
+      top:-21%;
+      left:0;
+      z-index:3;
+
     }
-
-   
+  }
 `;
 
 const Logo = styled(GatsbyImage)`
-  display: flex;
-  bottom: 15%
-  
+  position:relative;
 `;
-const MobileLogo = styled(Link)`
+
+const MobileLogo = styled.div`
   display: none;
+
   @media (max-width: 750px) {
     display: block;
+    position: absolute;
     border-bottom: solid 1px black;
-
+    background-color: white;
+    height: 9%;
+    width: 100vw;
+    z-index: 3;
   }
 `;
 

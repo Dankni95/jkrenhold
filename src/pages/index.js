@@ -63,8 +63,8 @@ const IndexPage = () => {
       <Main />
       <Layout>
       <title>Renhold for bedrifter & private hjem | JK Renholdsservice AS</title>
-      <h1>Hey!</h1>
-      </Layout>
+      <h1>Index Content goes here!</h1>
+      </Layout> 
     </>
   )
 }
