@@ -42,8 +42,8 @@ const HeroSection = () => {
 }
 const Wrapper = styled.div`
  
-      /* --yellow: #0E3C7B;
-      --blue: #FEEA2B; */
+      /* --blue: #0E3C7B;
+      --yellow: #FEEA2B; */
 
 
       display: flex;
@@ -57,8 +57,9 @@ const Wrapper = styled.div`
 
 const DarkOverlay = styled.div`
 
-background-color: rgba(0, 0, 0, 0.35);
-  position: absolute;
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,0.8225490879945728) 0%, rgba(14,60,123,0.906582701439951) 35%, rgba(14,60,123,0.3799720571822479) 100%);
+position: absolute;
       max-height: calc(100vh - 5rem);
           
       @media screen and (max-width: 750px) {
@@ -135,13 +136,13 @@ const ContactButton = styled.button`
     }
   }
   @media screen and (max-width: 750px) {
-        bottom:35%;
+        bottom:25%;
         font-size: 1.5em;
         max-width: 90%;
       }
 
       @media screen and (max-width: 1250px) {
-        bottom:75%;
+        bottom:35%;
         font-size: 1.5em;
         max-width: 90%;
       }
