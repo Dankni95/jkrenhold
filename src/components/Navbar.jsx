@@ -6,9 +6,10 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaCaretRight } from "react-icons/fa";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby"
+import { FiPhoneCall } from "react-icons/fi"
 
 
 const Navbar = () => {
@@ -38,11 +39,12 @@ const Navbar = () => {
         image={data.file.childImageSharp.gatsbyImageData}
         alt="JK renhold logo"
       /></Page>
-      <Page to="/" getProps={isActive}>FORSIDE</Page>
-      <Page to="/om-oss/" getProps={isActive}>OM OSS</Page>
-      <Page to="#" getProps={isActive}>RENGJØRING</Page>
-      <Page to="#" getProps={isActive}>AVDELINGER</Page>
-      <Page to="/kontakt-oss/" getProps={isActive}>KONTAKT OSS</Page>
+      <Page to="/" getProps={isActive}> FORSIDE</Page>
+      <Page to="/om-oss/" getProps={isActive}> OM OSS</Page>
+      <Page to="#" getProps={isActive}><FaCaretRight></FaCaretRight> RENGJØRING</Page>
+      <Page to="#" getProps={isActive}><FaCaretRight></FaCaretRight> AVDELINGER</Page>
+      <Page to="/kontakt-oss/" getProps={isActive}> KONTAKT OSS</Page>
+      <Phone href="tel:+4798014418"><PhoneIcon></PhoneIcon><p>  98014418 </p></Phone>
     </Nav>
   </>;
 }
@@ -54,15 +56,23 @@ const Nav = styled.div`
 
 /* Desktop view */
 
+  display: flex;
   height: 4em;
   font-size: 1.3rem;
   background: transparent;
-  display: flex;
   border-bottom: solid 1px black;
+  box-shadow: 0 0px 3px #000000;
 
   #onPage{
     background-color: #FEEA2B;
 }
+
+//Phone number
+
+& a:last-child {
+      margin-left: auto;
+}
+
 
   /* Mobile view */
 
@@ -81,9 +91,9 @@ const Nav = styled.div`
       grid-gap: 0px;
     } 
     
-  
+
       &.active{
-        background: #9899d1;
+        background: white;
         left: 0;
         transition: all 0.5s ease;
         z-index: 4;
@@ -107,7 +117,8 @@ const Bars = styled(FaBars)`
 
   /* Desktop view */
   display: none;
-  color: #808080;
+  color: black;
+  
 
 
   /* Mobile view  */
@@ -129,7 +140,7 @@ const Page = styled(Link)`
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
@@ -168,5 +179,23 @@ const MobileLogo = styled.div`
   }
 `;
 
+const Phone = styled.a`
+ display: flex;
+   align-items: center;
+   align-self: center;
+   color: #0E3C7B;
+   text-decoration: none;  
+   padding: 0px 60px 0px 40px;
+  
+   @media (max-width: 1000px) {
+     display: none;
+   }
+  
+ `;
+
+const PhoneIcon = styled(FiPhoneCall)`
+ padding: 2% 10% 2% 4% ;
+ font-size: 2rem;
+ `;
 
 export default Navbar

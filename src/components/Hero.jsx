@@ -60,26 +60,23 @@ const DarkOverlay = styled.div`
 background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,0.8225490879945728) 0%, rgba(14,60,123,0.906582701439951) 35%, rgba(14,60,123,0.3799720571822479) 100%);
 position: absolute;
-      max-height: calc(100vh - 5rem);
-          
-      @media screen and (max-width: 750px) {
-          max-height: calc(100vh - 5rem);
-          height: 80vh;
-      }
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 5rem);
+        -moz-box-shadow:    inset 0 0 3px #ffffffac;
+      -webkit-box-shadow: inset 0 0 3px #ffffffa6;
+      box-shadow: inset 0px 0 3px #ffffffb0;
+      
   z-index: 2;
 `;
 
 const HeroImage = styled(GatsbyImage)`
 
       position: relative;
-      max-height: calc(100vh - 5rem);
+      height: calc(100vh - 5rem);
+      box-shadow: 0 0px 3px #000000;
           
-      @media screen and (max-width: 750px) {
-          max-height: calc(100vh - 5rem);
-          height: 80vh;
-      }
+     
+     
       `;
 
 
@@ -140,7 +137,8 @@ const ContactButton = styled.button`
         font-size: 1.5em;
         max-width: 90%;
       }
-
+      
+     
       @media screen and (max-width: 1250px) {
         bottom:35%;
         font-size: 1.5em;

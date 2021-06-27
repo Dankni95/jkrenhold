@@ -88,10 +88,11 @@ const Footer = () => {
 const DarkOverlay = styled.div`
 
 background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,0.8225490879945728) 0%,
- #0e3b7b 35%, #0e3b7b 100%);
- position: relative;
-   
+background: linear-gradient(90deg, rgba(2,0,36,0.8225490879945728) 0%, #0e3b7b 35%, #0e3b7b 100%);
+position: relative;
+  -moz-box-shadow:    inset 0 0 3px #ffffffac;
+  -webkit-box-shadow: inset 0 0 3px #ffffffa6;
+  box-shadow: inset 0px 0 3px #ffffffb0;
   width: 100%;
 `;
 
@@ -102,6 +103,7 @@ position: absolute;
   left: 0;
   right: 0;
 opacity: 0.5;
+  box-shadow: 0 0px 3px #000000;
 
  @media (max-width: 730px) {
    
