@@ -4,7 +4,7 @@
   </a>
 </p>
 <h1 align="center">
-  Gatsby minimal starter
+  Preview https://jkrenholddevelop.gatsbyjs.io/
 </h1>
 
 ## 🚀 Quick start
