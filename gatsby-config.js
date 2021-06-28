@@ -1,4 +1,7 @@
 module.exports = {
+  plugins: [`gatsby-plugin-gatsby-cloud`]
+}
+module.exports = {
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
@@ -27,9 +30,6 @@ module.exports = {
 }
 
 
-module.exports = {
-  plugins: [`gatsby-plugin-gatsby-cloud`]
-}
 
 module.exports = {
   plugins: [
