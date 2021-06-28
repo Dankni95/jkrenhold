@@ -19,7 +19,6 @@ const HeroSection = () => {
 }
 `)
 
-  console.log(data);
 
   function sayHello() {
     alert('Hello')
