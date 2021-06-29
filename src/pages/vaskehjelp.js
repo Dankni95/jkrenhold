@@ -3,7 +3,6 @@ import Layout from "../components/Layout"
 import  styled from 'styled-components'
 import {createGlobalStyle} from "styled-components"
 
-
 const Main = createGlobalStyle`
   html, body {
     height: 100%;
@@ -14,21 +13,20 @@ const Main = createGlobalStyle`
   }
 `
 
-// markup
-const IndexPage = () => {
-  return (
-    <>
+const Vaskehjelp = () => {
+    return (
+      <>
       <Main />
-      <Layout>
-      <title>Renhold for bedrifter & private hjem | JK Renholdsservice AS</title>
-      <Content>Index Content goes here!</Content>
-      </Layout> 
-    </>
-  )
-}
+        <Layout>
+        <title>Vaskehjelp Horten | JK Renholdsservice AS</title>
+        <Content>Index Content goes here!</Content>
+        </Layout> 
+      </>
+    )
+  }
 
-const Content = styled.h1`
+  const Content = styled.h1`
 text-align: center;
 `
 
-export default IndexPage
+export default Vaskehjelp;

@@ -15,12 +15,12 @@ const Main = createGlobalStyle`
 `
 
 // markup
-const IndexPage = () => {
+const AboutUs = () => {
   return (
     <>
       <Main />
       <Layout>
-      <title>Renhold for bedrifter & private hjem | JK Renholdsservice AS</title>
+      <title>Kontakt oss | JK Renholdsservice AS</title>
       <Content>Index Content goes here!</Content>
       </Layout> 
     </>
@@ -31,4 +31,4 @@ const Content = styled.h1`
 text-align: center;
 `
 
-export default IndexPage
+export default AboutUs;

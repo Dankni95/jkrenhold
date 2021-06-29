@@ -43,38 +43,42 @@ const Wrapper = styled.div`
  
       /* --blue: #0E3C7B;
       --yellow: #FEEA2B; */
-
-
-      display: flex;
-      align-items: center;
-      align-items: flex-start;
-      min-width: 100%;
-      & > * {
-        flex-grow: 1;
+      & img {
+       
+        overflow: hidden !important;
       }
+
+  
+    
       `;
 
 const DarkOverlay = styled.div`
 
 background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,0.8225490879945728) 0%, rgba(14,60,123,0.906582701439951) 35%, rgba(14,60,123,0.3799720571822479) 100%);
+background: linear-gradient(90deg, #020024e1 0%, rgba(14,60,123,0.906582701439951) 35%, rgba(14,60,123,0.3799720571822479) 100%);
 position: absolute;
   width: 100%;
-  height: calc(100vh - 5rem);
+  height: 100vh;
+  top: 0px;
         -moz-box-shadow:    inset 0 0 3px #ffffffac;
       -webkit-box-shadow: inset 0 0 3px #ffffffa6;
       box-shadow: inset 0px 0 3px #ffffffb0;
-      
-  z-index: 2;
+
+  z-index: 3;
+  
 `;
 
 const HeroImage = styled(GatsbyImage)`
 
       position: relative;
-      height: calc(100vh - 5rem);
+      height: calc( 100vh);
+      top: -105px;
+      height: calc(100vh);
       box-shadow: 0 0px 3px #000000;
-          
+     z-index: 2;
+     overflow: hidden;
      
+
      
       `;
 
@@ -87,7 +91,7 @@ const Title = styled.h1`
     font-size: 4.5em;
     word-wrap: break-word;
     color: white;
-    z-index: 3;
+    z-index: 4;
 
     @media screen and (max-width: 750px) {
          font-size: 3.5em;
@@ -118,7 +122,7 @@ const ContactButton = styled.button`
   border-radius: 15px;
   margin: 10px 0px;
   cursor: pointer;
-  z-index: 3;
+  z-index: 4;
   & a{
     text-decoration: none;
   }
@@ -126,9 +130,9 @@ const ContactButton = styled.button`
     color: white;
   }
   &:hover{
-    background-color: #153C7B; 
+      background-color: white;
+    color: #153C7B; 
     a{
-      color: white;
     }
   }
   @media screen and (max-width: 750px) {

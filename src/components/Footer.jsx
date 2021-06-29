@@ -142,7 +142,7 @@ opacity: 0.1;
 `;
 const StripeLogo = styled(GatsbyImage)`
 position: relative;
-@media (max-width: 1030px) {
+@media (max-width: 1000px) {
    right: 10%;
   }
 `;
@@ -158,8 +158,8 @@ const Logo = styled(GatsbyImage)`
 
 const Box = styled.div`
   position: relative;
+
   @media (max-width: 1000px) {
-    padding: 70px;
   }
 
 `;

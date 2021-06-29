@@ -57,14 +57,14 @@ const Nav = styled.div`
 /* Desktop view */
 
   display: flex;
-  height: 4em;
+  height: 5em;
   font-size: 1.3rem;
-  background: transparent;
-  border-bottom: solid 1px black;
-  box-shadow: 0 0px 3px #000000;
+  background-color: transparent;
+
+
 
   #onPage{
-    background-color: #FEEA2B;
+    border-bottom: 1px solid white;
 }
 
 //Phone number
@@ -76,7 +76,17 @@ const Nav = styled.div`
 
   /* Mobile view */
 
+  @media (max-width: 1200px) {
+    & > * {
+        padding: 0;
+        flex-grow: 1;
+        justify-content: center;
+      }
+  }
+
+
   @media (max-width: 750px) {
+  z-index: 1 !important;
     a{
       height: 15%
     }
@@ -96,7 +106,7 @@ const Nav = styled.div`
         background: white;
         left: 0;
         transition: all 0.5s ease;
-        z-index: 4;
+        z-index: 5 !important;
       }
 
   }
@@ -109,6 +119,7 @@ const Nav = styled.div`
     @media (max-width: 910px) {
       &{
       font-size: 0.7rem;
+      z-index: 4;
       }
     }
 
@@ -130,32 +141,40 @@ const Bars = styled(FaBars)`
     transform: translate(-100%, 75%);
     font-size: 2rem;
     cursor: pointer;
+    z-index: 4;
 }
 
 `;
 
 const Page = styled(Link)`
 /* Desktop view */
-  color: #0E3C7B;
-  display: inline-flex;
+  color: whitesmoke;
+  display: flex;
   align-items: center;
+
+
   text-decoration: none;
   font-size: 1.2rem;
-  padding: 0 1rem;
   height: 100%;
+  padding: 0 1rem;
   cursor: pointer;
+  z-index: 5;
+  
+
     &:hover {
-      background-color:#FEEA2B;
+      transform: translate(0, -2%);
+      border-bottom: 1px solid #FEEA2B;
+      transition: all 2.5s ease;
     }
 
 // logo
 //Mobile view 
   @media (max-width: 750px) {
+    color: black;
     &:first-child  {
       position:absolute;
       top:-21%;
       left:0;
-      z-index:3;
 
     }
   }
@@ -163,9 +182,11 @@ const Page = styled(Link)`
 
 const Logo = styled(GatsbyImage)`
   position:relative;
+
 `;
 
 const MobileLogo = styled.div`
+z-index: 5 !important;
   display: none;
 
   @media (max-width: 750px) {
@@ -175,17 +196,17 @@ const MobileLogo = styled.div`
     background-color: white;
     height: 9%;
     width: 100vw;
-    z-index: 3;
   }
 `;
 
 const Phone = styled.a`
  display: flex;
    align-items: center;
-   align-self: center;
-   color: #0E3C7B;
+   color: whitesmoke;
    text-decoration: none;  
    padding: 0px 60px 0px 40px;
+   z-index: 50 !important;
+
   
    @media (max-width: 1000px) {
      display: none;
@@ -196,6 +217,8 @@ const Phone = styled.a`
 const PhoneIcon = styled(FiPhoneCall)`
  padding: 2% 10% 2% 4% ;
  font-size: 2rem;
+ z-index: 5 !important;
+
  `;
 
 export default Navbar

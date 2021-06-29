@@ -1,13 +1,16 @@
 module.exports = {
-  plugins: [`gatsby-plugin-gatsby-cloud`]
-}
-
-
+  siteMetadata: {
+    title: "jkrenhold",
+  }
+};
 
 module.exports = {
   plugins: [`gatsby-plugin-styled-components`],
 }
 
+module.exports = {
+  plugins: [`gatsby-plugin-gatsby-cloud`]
+}
 
 
 module.exports = {
