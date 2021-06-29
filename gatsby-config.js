@@ -22,6 +22,17 @@ module.exports = {
         path: `${__dirname}/src/images/`,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "JK Renhold",
+        short_name: "jkrenhold.no",
+        start_url: `/`,
+        background_color: "#6b37bf",
+        display: "standalone",
+        icon: `src/images/logo-small.png`, // This path is relative to the root of the site.
+      },
+    },
   ],
 }
 

@@ -17,12 +17,12 @@ const Footer = () => {
         }
       logo: file(relativePath: {eq: "icon.png"}) {
         childImageSharp {
-          gatsbyImageData(width: 310,height:150, placeholder: BLURRED, layout: FIXED)
+          gatsbyImageData(width: 300,height:100, placeholder: BLURRED)
         }
     }
     stripe: file(relativePath: {eq: "stripe-logo.png"}) {
       childImageSharp {
-        gatsbyImageData(width: 300,height:100, placeholder: BLURRED, layout: FIXED)
+        gatsbyImageData(width: 300,height:100, placeholder: BLURRED)
       }
   }
   }
@@ -56,10 +56,9 @@ const Footer = () => {
             <Column>
               <Logo image={placeholderImage.logo.childImageSharp.gatsbyImageData} alt="logo"></Logo>
             </Column>
-            
             <Column>
             <SocialMedia>
-              <Logo image={placeholderImage.stripe.childImageSharp.gatsbyImageData} alt="stripe logo"></Logo>
+              <StripeLogo image={placeholderImage.stripe.childImageSharp.gatsbyImageData} alt="stripe logo"></StripeLogo>
             </SocialMedia>
               <Heading>Følg oss</Heading>
               <SocialMedia>
@@ -105,7 +104,7 @@ const Footer = () => {
 const DarkOverlay = styled.div`
 
 background: #000000;
-background: linear-gradient(90deg, rgba(2,0,36,0.8225490879945728) 0%, rgba(14,60,123,0.906582701439951) 35%, rgba(14,60,123,0.3799720571822479) 100%);
+background: linear-gradient(90deg, #020024 0%, #0e3b7b 35%, rgba(14,60,123,0.3799720571822479) 100%);
 position: relative;
   -moz-box-shadow:    inset 0 0 3px #ffffffac;
   -webkit-box-shadow: inset 0 0 3px #ffffffa6;
@@ -122,12 +121,10 @@ flex-wrap: wrap;
    color: #0E3C7B;
    text-decoration: none;  
   
-  justify-content:center;
 
        & a {
     padding-left: 10px;
     font-size: 2rem;
-    filter: invert(1);
   }
 
 `;
@@ -139,22 +136,30 @@ position: absolute;
   height: 100%;
   left: 0;
   right: 0;
-opacity: 0.3;
+opacity: 0.1;
   box-shadow: 0 0px 3px #000000;
 
- @media (max-width: 730px) {
-   
+`;
+const StripeLogo = styled(GatsbyImage)`
+position: relative;
+@media (max-width: 1030px) {
+   right: 10%;
   }
-`
+`;
 const Logo = styled(GatsbyImage)`
- 
-`
+  position: relative;
+  right: 30%;
+ @media (max-width: 1030px) {
+   right: 10%;
+  }
+
+`;
 
 
 const Box = styled.div`
   position: relative;
   @media (max-width: 1000px) {
-    padding: 70px 30px;
+    padding: 70px;
   }
 
 `;
@@ -167,22 +172,21 @@ const Container = styled.div`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: left;
-  margin-left: 60px;
-
-   justify-content: center;
+  justify-content: center;
   
 `;
 
 const Row = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
-  grid-gap: 30px;
-  & > * {
-    justify-self: center;
-      }
+  grid-gap: 10px;
+  justify-items: center;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 730px) {
+    justify-items: flex-start;
+  }
+
+  @media (max-width: 1030px) {
     grid-template-columns: repeat(auto-fill,  minmax(200px, 1fr));
   }
 `;
@@ -202,9 +206,11 @@ const FooterLink = styled.a`
 `;
 
 const Heading = styled.p`
-  color: #0c4088;
+  color: whitesmoke;
+  border-bottom: 1px solid white;
   font-weight: bold;
   font-size: 1.8em;
+  padding-bottom: 5px;
   z-index: 2;
 `;
 
