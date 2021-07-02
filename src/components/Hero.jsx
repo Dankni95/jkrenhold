@@ -19,11 +19,6 @@ const HeroSection = () => {
 }
 `)
 
-
-  function sayHello() {
-    alert('Hello')
-  }
-
   return <>
 
     <Wrapper>
@@ -47,9 +42,6 @@ const Wrapper = styled.div`
        
         overflow: hidden !important;
       }
-
-  
-    
       `;
 
 const DarkOverlay = styled.div`
@@ -77,8 +69,6 @@ const HeroImage = styled(GatsbyImage)`
       box-shadow: 0 0px 3px #000000;
      z-index: 2;
      overflow: hidden;
-     
-
      
       `;
 
@@ -140,8 +130,7 @@ const ContactButton = styled.button`
         font-size: 1.5em;
         max-width: 90%;
       }
-      
-     
+        
       @media screen and (max-width: 1250px) {
         bottom:35%;
         font-size: 1.5em;
