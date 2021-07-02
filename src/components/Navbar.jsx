@@ -83,7 +83,7 @@ const Nav = styled.div`
         justify-content: center;
       }
   }
-
+ 
 
   @media (max-width: 750px) {
   z-index: 1 !important;
@@ -166,6 +166,11 @@ const Page = styled(Link)`
       border-bottom: 1px solid #FEEA2B;
       transition: all 2.5s ease;
     }
+
+    @media (max-width: 925px) {
+    font-size: 0.9rem;
+
+  }
 
 // logo
 //Mobile view 

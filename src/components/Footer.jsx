@@ -178,16 +178,19 @@ const Column = styled.div`
 
 const Row = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
-  grid-gap: 10px;
+  grid-gap: 20px;
+  padding-left: 30px;
   justify-items: center;
 
-  @media (max-width: 730px) {
-    justify-items: flex-start;
+  grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(auto-fill,  minmax(30%, 1fr));
   }
 
-  @media (max-width: 1030px) {
-    grid-template-columns: repeat(auto-fill,  minmax(200px, 1fr));
+  // added for firefox
+  @media (max-width: 758px) {
+    grid-template-columns: repeat(auto-fill,  minmax(100%, 1fr));
   }
 `;
 
